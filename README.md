@@ -4,6 +4,8 @@ tiktok ui remake with unofficial tiktok web api using flutter
  
  # Give the repo ⭐️ for the support :) 
 
+![img](https://i.imgur.com/JOw0ad6.jpg "TikTok")
+
 ## Demo
 
 ![](demo.gif "Demo")
