@@ -16,4 +16,4 @@ tiktok ui remake with unofficial tiktok web api using flutter
 
 ## Visitors Count
 
-<img align="left" src = "https://profile-counter.glitch.me/flutter_spacexopedia/count.svg" alt ="Loading">
+<img align="left" src = "https://profile-counter.glitch.me/Flutter-Tiktok-UI-API-Clone/count.svg" alt ="Loading">
