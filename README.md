@@ -12,3 +12,8 @@ tiktok ui remake with unofficial tiktok web api using flutter
 
 - [Youtube Channel](https://www.youtube.com/c/XSLAYERTN)
 - [Linkedin](https://www.linkedin.com/in/x-slayer/)
+
+
+## Visitors Count
+
+<img align="left" src = "https://profile-counter.glitch.me/flutter_spacexopedia/count.svg" alt ="Loading">
