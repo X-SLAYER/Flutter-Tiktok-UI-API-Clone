@@ -73,7 +73,7 @@ class RightItems extends StatelessWidget {
       child: AvatarGlow(
         glowColor: Colors.black,
         endRadius:
-            35.0, //required https://i.iheart.com/v3/url/aHR0cDovL2ltYWdlLmloZWFydC5jb20vaW1hZ2VzL3JvdmkvNTAwLzAwMDQvMzUxL01JMDAwNDM1MTA4My5qcGc=?ops=fit%28480%2C480%29%2Crun%28%22circle%22%29&surrogate=1cOXl179JY-syhxYSCX6Q1a_Mcu6UO8d-F4oJzpZf1hcUbJr4aImwtcKGFetygNPKx2a2jKgDrRWeMd-3Y81NovggdU4GlcP6b4Kjc0ypRaOcQif4FwzHlTRUwRp6VeSlYfxISS4xMP-jvp1KPWT2FvXla9vg4B6K11C6Dso-zOhrMh7m6gRl6duI1b1Qv28_7GjnisZPeXTWEhbp5WVkXItCQ%3D%3D'
+            35.0,
         child: Container(
           width: 30.0,
           height: 30.0,
