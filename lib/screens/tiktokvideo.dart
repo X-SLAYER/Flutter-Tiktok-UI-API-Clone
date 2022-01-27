@@ -7,26 +7,26 @@ import 'package:tiktok/widget/videoPlayer.dart';
 class TikTokVideo extends StatelessWidget {
   final ItemListData data;
 
-  const TikTokVideo({@required this.data});
+  const TikTokVideo({required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          TikTokVideoPlayer(url: data.itemInfos.video.urls[0]),
+          TikTokVideoPlayer(url: data.itemInfos!.video!.urls![0]),
           title(),
           RightItems(
-            comments: data.itemInfos.commentCount.toString(),
-            userImg: data.authorInfos.covers[0],
-            favorite: data.itemInfos.diggCount,
-            coverImg: data.musicInfos.covers[0],
+            comments: data.itemInfos!.commentCount.toString(),
+            userImg: data.authorInfos!.covers![0],
+            favorite: data.itemInfos!.diggCount!,
+            coverImg: data.musicInfos!.covers![0],
           ),
           LeftItems(
-            description: data.itemInfos.text,
-            musicName: data.musicInfos.musicName,
-            authorName: data.musicInfos.authorName,
-            userName: data.authorInfos.uniqueId,
+            description: data.itemInfos!.text!,
+            musicName: data.musicInfos!.musicName!,
+            authorName: data.musicInfos!.authorName!,
+            userName: data.authorInfos!.uniqueId!,
           )
         ],
       ),

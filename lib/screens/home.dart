@@ -9,7 +9,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
-  PageController pageController;
+  PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,36 +43,29 @@ class _HomePageState extends State<HomePage> {
             currentIndex = index;
           },
         );
-        // pageController.animateToPage(
-        //   index,
-        //   duration: Duration(
-        //     milliseconds: 200,
-        //   ),
-        //   curve: Curves.easeIn,
-        // );
       },
       currentIndex: currentIndex,
       type: BottomNavigationBarType.fixed,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          title: SizedBox.shrink(),
+          label: "",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.search),
-          title: SizedBox.shrink(),
+          label: "",
         ),
         BottomNavigationBarItem(
           icon: tikTokLog(),
-          title: SizedBox.shrink(),
+          label: "",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.indeterminate_check_box),
-          title: SizedBox.shrink(),
+          label: "",
         ),
         BottomNavigationBarItem(
           icon: Icon(FontAwesomeIcons.userAlt),
-          title: SizedBox.shrink(),
+          label: "",
         ),
       ],
     );

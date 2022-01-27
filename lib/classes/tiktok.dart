@@ -1,7 +1,7 @@
 class Tiktok {
-  int statusCode;
-  Body body;
-  Object errMsg;
+  int? statusCode;
+  Body? body;
+  dynamic errMsg;
 
   Tiktok({this.statusCode, this.body, this.errMsg});
 
@@ -15,7 +15,7 @@ class Tiktok {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['statusCode'] = this.statusCode;
     if (this.body != null) {
-      data['body'] = this.body.toJson();
+      data['body'] = this.body!.toJson();
     }
     data['errMsg'] = this.errMsg;
     return data;
@@ -23,11 +23,11 @@ class Tiktok {
 }
 
 class Body {
-  PageState pageState;
-  List<ItemListData> itemListData;
-  String hasMore;
-  String maxCursor;
-  String minCursor;
+  PageState? pageState;
+  List<ItemListData>? itemListData;
+  String? hasMore;
+  String? maxCursor;
+  String? minCursor;
 
   Body(
       {this.pageState,
@@ -41,9 +41,9 @@ class Body {
         ? new PageState.fromJson(json['pageState'])
         : null;
     if (json['itemListData'] != null) {
-      itemListData = new List<ItemListData>();
+      itemListData = <ItemListData>[];
       json['itemListData'].forEach((v) {
-        itemListData.add(new ItemListData.fromJson(v));
+        itemListData!.add(new ItemListData.fromJson(v));
       });
     }
 
@@ -55,10 +55,10 @@ class Body {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.pageState != null) {
-      data['pageState'] = this.pageState.toJson();
+      data['pageState'] = this.pageState!.toJson();
     }
     if (this.itemListData != null) {
-      data['itemListData'] = this.itemListData.map((v) => v.toJson()).toList();
+      data['itemListData'] = this.itemListData!.map((v) => v.toJson()).toList();
     }
 
     data['hasMore'] = this.hasMore;
@@ -69,20 +69,21 @@ class Body {
 }
 
 class PageState {
-  int regionAppId;
-  String os;
-  String region;
-  String baseURL;
-  String appType;
-  String fullUrl;
+  int? regionAppId;
+  String? os;
+  String? region;
+  String? baseURL;
+  String? appType;
+  String? fullUrl;
 
-  PageState(
-      {this.regionAppId,
-      this.os,
-      this.region,
-      this.baseURL,
-      this.appType,
-      this.fullUrl});
+  PageState({
+    this.regionAppId,
+    this.os,
+    this.region,
+    this.baseURL,
+    this.appType,
+    this.fullUrl,
+  });
 
   PageState.fromJson(Map<String, dynamic> json) {
     regionAppId = json['regionAppId'];
@@ -106,22 +107,23 @@ class PageState {
 }
 
 class ItemListData {
-  ItemInfos itemInfos;
-  AuthorInfos authorInfos;
-  MusicInfos musicInfos;
-  List<ChallengeInfoList> challengeInfoList;
-  String duetInfo;
-  List<TextExtra> textExtra;
-  AuthorStats authorStats;
+  ItemInfos? itemInfos;
+  AuthorInfos? authorInfos;
+  MusicInfos? musicInfos;
+  List<ChallengeInfoList>? challengeInfoList;
+  String? duetInfo;
+  List<TextExtra>? textExtra;
+  AuthorStats? authorStats;
 
-  ItemListData(
-      {this.itemInfos,
-      this.authorInfos,
-      this.musicInfos,
-      this.challengeInfoList,
-      this.duetInfo,
-      this.textExtra,
-      this.authorStats});
+  ItemListData({
+    this.itemInfos,
+    this.authorInfos,
+    this.musicInfos,
+    this.challengeInfoList,
+    this.duetInfo,
+    this.textExtra,
+    this.authorStats,
+  });
 
   ItemListData.fromJson(Map<String, dynamic> json) {
     itemInfos = json['itemInfos'] != null
@@ -134,16 +136,16 @@ class ItemListData {
         ? new MusicInfos.fromJson(json['musicInfos'])
         : null;
     if (json['challengeInfoList'] != null) {
-      challengeInfoList = new List<ChallengeInfoList>();
+      challengeInfoList = <ChallengeInfoList>[];
       json['challengeInfoList'].forEach((v) {
-        challengeInfoList.add(new ChallengeInfoList.fromJson(v));
+        challengeInfoList!.add(new ChallengeInfoList.fromJson(v));
       });
     }
     duetInfo = json['duetInfo'];
     if (json['textExtra'] != null) {
-      textExtra = new List<TextExtra>();
+      textExtra = <TextExtra>[];
       json['textExtra'].forEach((v) {
-        textExtra.add(new TextExtra.fromJson(v));
+        textExtra!.add(new TextExtra.fromJson(v));
       });
     }
     authorStats = json['authorStats'] != null
@@ -154,47 +156,47 @@ class ItemListData {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.itemInfos != null) {
-      data['itemInfos'] = this.itemInfos.toJson();
+      data['itemInfos'] = this.itemInfos!.toJson();
     }
     if (this.authorInfos != null) {
-      data['authorInfos'] = this.authorInfos.toJson();
+      data['authorInfos'] = this.authorInfos!.toJson();
     }
     if (this.musicInfos != null) {
-      data['musicInfos'] = this.musicInfos.toJson();
+      data['musicInfos'] = this.musicInfos!.toJson();
     }
     if (this.challengeInfoList != null) {
       data['challengeInfoList'] =
-          this.challengeInfoList.map((v) => v.toJson()).toList();
+          this.challengeInfoList!.map((v) => v.toJson()).toList();
     }
     data['duetInfo'] = this.duetInfo;
     if (this.textExtra != null) {
-      data['textExtra'] = this.textExtra.map((v) => v.toJson()).toList();
+      data['textExtra'] = this.textExtra!.map((v) => v.toJson()).toList();
     }
     if (this.authorStats != null) {
-      data['authorStats'] = this.authorStats.toJson();
+      data['authorStats'] = this.authorStats!.toJson();
     }
     return data;
   }
 }
 
 class ItemInfos {
-  String id;
-  String text;
-  String createTime;
-  String authorId;
-  String musicId;
-  List<String> covers;
-  List<String> coversOrigin;
-  List<String> coversDynamic;
-  Video video;
-  int diggCount;
-  int shareCount;
-  int playCount;
-  int commentCount;
-  bool isOriginal;
-  bool isOfficial;
-  bool isActivityItem;
-  List<Null> warnInfo;
+  String? id;
+  String? text;
+  String? createTime;
+  String? authorId;
+  String? musicId;
+  List<String>? covers;
+  List<String>? coversOrigin;
+  List<String>? coversDynamic;
+  Video? video;
+  int? diggCount;
+  int? shareCount;
+  int? playCount;
+  int? commentCount;
+  bool? isOriginal;
+  bool? isOfficial;
+  bool? isActivityItem;
+  List<dynamic>? warnInfo;
 
   ItemInfos(
       {this.id,
@@ -233,7 +235,7 @@ class ItemInfos {
     isOfficial = json['isOfficial'];
     isActivityItem = json['isActivityItem'];
     if (json['warnInfo'] != null) {
-      warnInfo = new List<Null>();
+      warnInfo = <dynamic>[];
     }
   }
 
@@ -248,7 +250,7 @@ class ItemInfos {
     data['coversOrigin'] = this.coversOrigin;
     data['coversDynamic'] = this.coversDynamic;
     if (this.video != null) {
-      data['video'] = this.video.toJson();
+      data['video'] = this.video!.toJson();
     }
     data['diggCount'] = this.diggCount;
     data['shareCount'] = this.shareCount;
@@ -262,8 +264,8 @@ class ItemInfos {
 }
 
 class Video {
-  List<String> urls;
-  VideoMeta videoMeta;
+  List<String>? urls;
+  VideoMeta? videoMeta;
 
   Video({this.urls, this.videoMeta});
 
@@ -278,19 +280,24 @@ class Video {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['urls'] = this.urls;
     if (this.videoMeta != null) {
-      data['videoMeta'] = this.videoMeta.toJson();
+      data['videoMeta'] = this.videoMeta!.toJson();
     }
     return data;
   }
 }
 
 class VideoMeta {
-  int width;
-  int height;
-  int ratio;
-  int duration;
+  int? width;
+  int? height;
+  int? ratio;
+  int? duration;
 
-  VideoMeta({this.width, this.height, this.ratio, this.duration});
+  VideoMeta({
+    this.width,
+    this.height,
+    this.ratio,
+    this.duration,
+  });
 
   VideoMeta.fromJson(Map<String, dynamic> json) {
     width = json['width'];
@@ -310,28 +317,29 @@ class VideoMeta {
 }
 
 class AuthorInfos {
-  String secUid;
-  String userId;
-  String uniqueId;
-  String nickName;
-  String signature;
-  bool verified;
-  List<String> covers;
-  List<String> coversMedium;
-  List<String> coversLarger;
-  bool isSecret;
+  String? secUid;
+  String? userId;
+  String? uniqueId;
+  String? nickName;
+  String? signature;
+  bool? verified;
+  List<String>? covers;
+  List<String>? coversMedium;
+  List<String>? coversLarger;
+  bool? isSecret;
 
-  AuthorInfos(
-      {this.secUid,
-      this.userId,
-      this.uniqueId,
-      this.nickName,
-      this.signature,
-      this.verified,
-      this.covers,
-      this.coversMedium,
-      this.coversLarger,
-      this.isSecret});
+  AuthorInfos({
+    this.secUid,
+    this.userId,
+    this.uniqueId,
+    this.nickName,
+    this.signature,
+    this.verified,
+    this.covers,
+    this.coversMedium,
+    this.coversLarger,
+    this.isSecret,
+  });
 
   AuthorInfos.fromJson(Map<String, dynamic> json) {
     secUid = json['secUid'];
@@ -363,24 +371,25 @@ class AuthorInfos {
 }
 
 class MusicInfos {
-  String musicId;
-  String musicName;
-  String authorName;
-  String original;
-  List<String> playUrl;
-  List<String> covers;
-  List<String> coversMedium;
-  List<String> coversLarger;
+  String? musicId;
+  String? musicName;
+  String? authorName;
+  String? original;
+  List<String>? playUrl;
+  List<String>? covers;
+  List<String>? coversMedium;
+  List<String>? coversLarger;
 
-  MusicInfos(
-      {this.musicId,
-      this.musicName,
-      this.authorName,
-      this.original,
-      this.playUrl,
-      this.covers,
-      this.coversMedium,
-      this.coversLarger});
+  MusicInfos({
+    this.musicId,
+    this.musicName,
+    this.authorName,
+    this.original,
+    this.playUrl,
+    this.covers,
+    this.coversMedium,
+    this.coversLarger,
+  });
 
   MusicInfos.fromJson(Map<String, dynamic> json) {
     musicId = json['musicId'];
@@ -408,24 +417,25 @@ class MusicInfos {
 }
 
 class ChallengeInfoList {
-  String challengeId;
-  String challengeName;
-  bool isCommerce;
-  String text;
-  List<String> covers;
-  List<String> coversMedium;
-  List<String> coversLarger;
-  String splitTitle;
+  String? challengeId;
+  String? challengeName;
+  bool? isCommerce;
+  String? text;
+  List<String>? covers;
+  List<String>? coversMedium;
+  List<String>? coversLarger;
+  String? splitTitle;
 
-  ChallengeInfoList(
-      {this.challengeId,
-      this.challengeName,
-      this.isCommerce,
-      this.text,
-      this.covers,
-      this.coversMedium,
-      this.coversLarger,
-      this.splitTitle});
+  ChallengeInfoList({
+    this.challengeId,
+    this.challengeName,
+    this.isCommerce,
+    this.text,
+    this.covers,
+    this.coversMedium,
+    this.coversLarger,
+    this.splitTitle,
+  });
 
   ChallengeInfoList.fromJson(Map<String, dynamic> json) {
     challengeId = json['challengeId'];
@@ -453,24 +463,25 @@ class ChallengeInfoList {
 }
 
 class TextExtra {
-  String awemeId;
-  int start;
-  int end;
-  String hashtagName;
-  String hashtagId;
-  int type;
-  String userId;
-  bool isCommerce;
+  String? awemeId;
+  int? start;
+  int? end;
+  String? hashtagName;
+  String? hashtagId;
+  int? type;
+  String? userId;
+  bool? isCommerce;
 
-  TextExtra(
-      {this.awemeId,
-      this.start,
-      this.end,
-      this.hashtagName,
-      this.hashtagId,
-      this.type,
-      this.userId,
-      this.isCommerce});
+  TextExtra({
+    this.awemeId,
+    this.start,
+    this.end,
+    this.hashtagName,
+    this.hashtagId,
+    this.type,
+    this.userId,
+    this.isCommerce,
+  });
 
   TextExtra.fromJson(Map<String, dynamic> json) {
     awemeId = json['AwemeId'];
@@ -498,18 +509,19 @@ class TextExtra {
 }
 
 class AuthorStats {
-  int followingCount;
-  int followerCount;
-  String heartCount;
-  int videoCount;
-  int diggCount;
+  int? followingCount;
+  int? followerCount;
+  String? heartCount;
+  int? videoCount;
+  int? diggCount;
 
-  AuthorStats(
-      {this.followingCount,
-      this.followerCount,
-      this.heartCount,
-      this.videoCount,
-      this.diggCount});
+  AuthorStats({
+    this.followingCount,
+    this.followerCount,
+    this.heartCount,
+    this.videoCount,
+    this.diggCount,
+  });
 
   AuthorStats.fromJson(Map<String, dynamic> json) {
     followingCount = json['followingCount'];

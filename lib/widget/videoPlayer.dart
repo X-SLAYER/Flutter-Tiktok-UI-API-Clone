@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:getflutter/getflutter.dart';
 import 'package:video_player/video_player.dart';
 
 class TikTokVideoPlayer extends StatefulWidget {
-  final String url;
+  final String? url;
 
   const TikTokVideoPlayer({this.url});
 
@@ -12,7 +11,7 @@ class TikTokVideoPlayer extends StatefulWidget {
 }
 
 class _TikTokVideoPlayerState extends State<TikTokVideoPlayer> {
-  VideoPlayerController _controller;
+  late VideoPlayerController _controller;
 
   @override
   void initState() {
@@ -37,7 +36,7 @@ class _TikTokVideoPlayerState extends State<TikTokVideoPlayer> {
     return Container(
       color: Colors.black,
       height: double.infinity,
-      child: _controller.value.initialized
+      child: _controller.value.isInitialized
           ? GestureDetector(
               onTap: () {
                 if (_controller.value.isPlaying) {
@@ -60,12 +59,7 @@ class _TikTokVideoPlayerState extends State<TikTokVideoPlayer> {
   Widget loadingVideo() => Container(
         color: Colors.black,
         child: Center(
-          child: GFLoader(
-            type: GFLoaderType.circle,
-            loaderColorOne: Colors.blueAccent,
-            loaderColorTwo: Colors.black,
-            loaderColorThree: Colors.pink,
-          ),
+          child: CircularProgressIndicator(),
         ),
       );
 }

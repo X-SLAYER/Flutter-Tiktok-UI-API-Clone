@@ -1,21 +1,26 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:money_formatter/money_formatter.dart';
 
 class RightItems extends StatelessWidget {
-  final int favorite;
-  final String comments;
-  final String userImg;
-  final String coverImg;
+  final int? favorite;
+  final String? comments;
+  final String? userImg;
+  final String? coverImg;
 
-  const RightItems(
-      {Key key, this.favorite, this.comments, this.userImg, this.coverImg});
+  const RightItems({
+    Key? key,
+    this.favorite,
+    this.comments,
+    this.userImg,
+    this.coverImg,
+  });
 
   @override
   Widget build(BuildContext context) {
-    FlutterMoneyFormatter fmf =
-        FlutterMoneyFormatter(amount: double.parse(favorite.toString()));
+    MoneyFormatter fmf =
+        MoneyFormatter(amount: double.parse(favorite.toString()));
     return Align(
       alignment: Alignment.bottomRight,
       child: Column(
@@ -24,7 +29,7 @@ class RightItems extends StatelessWidget {
           userLogo(),
           SizedBox(height: 12.0),
           customIcon(Icons.favorite, "${fmf.output.compactNonSymbol}"),
-          customIcon(Icons.insert_comment, comments),
+          customIcon(Icons.insert_comment, comments!),
           customIcon(FontAwesomeIcons.share, "Share"),
           SizedBox(height: 40.0),
           musicLogo(),
@@ -41,7 +46,7 @@ class RightItems extends StatelessWidget {
         color: Colors.white,
         shape: BoxShape.circle,
         image: DecorationImage(
-          image: NetworkImage(userImg),
+          image: NetworkImage(userImg!),
           fit: BoxFit.cover,
         ),
       ),
@@ -72,15 +77,14 @@ class RightItems extends StatelessWidget {
       ),
       child: AvatarGlow(
         glowColor: Colors.black,
-        endRadius:
-            35.0,
+        endRadius: 35.0,
         child: Container(
           width: 30.0,
           height: 30.0,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             image: DecorationImage(
-                image: NetworkImage(coverImg), fit: BoxFit.cover),
+                image: NetworkImage(coverImg!), fit: BoxFit.cover),
           ),
         ),
       ),

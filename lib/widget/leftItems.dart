@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LeftItems extends StatefulWidget {
-  final String userName;
-  final String description;
-  final String musicName;
-  final String authorName;
+  final String? userName;
+  final String? description;
+  final String? musicName;
+  final String? authorName;
 
-  const LeftItems(
-      {this.userName, this.description, this.musicName, this.authorName});
+  const LeftItems({
+    this.userName,
+    this.description,
+    this.musicName,
+    this.authorName,
+  });
 
   @override
   _LeftItemsState createState() => _LeftItemsState();
@@ -16,8 +20,8 @@ class LeftItems extends StatefulWidget {
 
 class _LeftItemsState extends State<LeftItems>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Offset> _offsetAnimation;
+  late AnimationController _controller;
+  late Animation<Offset> _offsetAnimation;
 
   @override
   void initState() {
@@ -29,15 +33,12 @@ class _LeftItemsState extends State<LeftItems>
     _offsetAnimation = Tween<Offset>(
       begin: Offset.zero,
       end: const Offset(-2.0, 0.0),
-    ).animate(CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeIn
-    ));
+    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeIn));
   }
 
   @override
   void dispose() {
-      _controller.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -46,7 +47,7 @@ class _LeftItemsState extends State<LeftItems>
     return Align(
       alignment: Alignment.bottomLeft,
       child: Container(
-        padding: EdgeInsets.only(left : 8.0),
+        padding: EdgeInsets.only(left: 8.0),
         width: 280,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

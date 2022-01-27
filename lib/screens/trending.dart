@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:getflutter/getflutter.dart';
 import 'package:tiktok/classes/tiktok.dart';
 import 'package:tiktok/config/api.dart';
 import 'package:http/http.dart' as http;
@@ -13,7 +12,7 @@ class Trending extends StatefulWidget {
 }
 
 class _TrendingState extends State<Trending> {
-  PageController pageController;
+  PageController pageController = PageController();
   RequestController api = RequestController();
   List<Widget> tikTokVideos = [];
 
@@ -22,11 +21,11 @@ class _TrendingState extends State<Trending> {
     api.setCookie(cookies);
     try {
       var response = await http.get(
-        api.url,
+        Uri.parse(api.url),
         headers: api.headers,
       );
       Tiktok tiktok = Tiktok.fromJson(jsonDecode(response.body));
-      tiktok.body.itemListData.forEach(
+      tiktok.body!.itemListData!.forEach(
         (item) {
           setState(() {
             tikTokVideos.add(TikTokVideo(data: item));
@@ -54,12 +53,7 @@ class _TrendingState extends State<Trending> {
               Container(
                 color: Colors.black,
                 child: Center(
-                  child: GFLoader(
-                    type: GFLoaderType.circle,
-                    loaderColorOne: Colors.blueAccent,
-                    loaderColorTwo: Colors.black,
-                    loaderColorThree: Colors.pink,
-                  ),
+                  child: CircularProgressIndicator(),
                 ),
               )
             ]

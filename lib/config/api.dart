@@ -6,8 +6,9 @@ class RequestController {
 
   Future<String> getCookie() async {
     try {
-      var response = await http.get("https://m.tiktok.com/share/item/");
-      return response.headers["set-cookie"];
+      var response =
+          await http.get(Uri.parse("https://m.tiktok.com/share/item/"));
+      return response.headers["set-cookie"]!;
     } catch (e) {
       return "error";
     }
