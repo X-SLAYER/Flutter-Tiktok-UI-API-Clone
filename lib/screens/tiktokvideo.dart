@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tiktok/classes/tiktok.dart';
+import 'package:tiktok/models/tiktok.dart';
 import 'package:tiktok/widget/leftItems.dart';
 import 'package:tiktok/widget/rightItems.dart';
 import 'package:tiktok/widget/videoPlayer.dart';
